@@ -1,39 +1,87 @@
-# stock_page
+# 推荐股票数据展示网页
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+一个基于 Gitee Pages 的股票数据展示网页，用于展示被推荐股票的K线图和技术指标。
 
-#### 软件架构
-软件架构说明
+## 功能特性
 
+- 📊 **K线图展示**：显示股票的日K线图，支持缩放和拖拽
+- 📈 **均线指标**：MA5、MA10、MA20、MA60 均线
+- 📉 **技术指标**：
+  - VOL（成交量）
+  - MACD（指数平滑异同移动平均线）
+  - KDJ（随机指标）
+  - BOLL（布林带）
+  - 自定义指标1（多空趋势指标）
+  - 自定义指标2（动力线指标）
+- 📱 **响应式设计**：支持桌面和移动设备访问
+- 🔄 **实时数据**：每次打开网页自动加载最新数据
 
-#### 安装教程
+## 在线访问
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+通过 Gitee Pages 访问：`https://[用户名].gitee.io/stock_page`
 
-#### 使用说明
+## 项目结构
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```
+stock_page/
+├── index.html              # 主页面
+├── css/
+│   └── style.css          # 样式文件
+├── js/
+│   ├── app.js             # 主应用逻辑
+│   ├── chart.js           # K线图表模块
+│   └── indicators.js      # 技术指标计算模块
+├── data/
+│   └── recommended_stocks.json.gz  # 股票数据（gzip压缩）
+└── docs/
+    └── recommended_stocks_data_schema.md  # 数据格式说明
+```
 
-#### 参与贡献
+## 使用说明
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+1. **选择股票**：在左侧列表中点击选择要查看的股票
+2. **查看K线**：右侧主图显示K线和均线
+3. **切换指标**：点击指标标签切换副图指标
+4. **缩放图表**：使用鼠标滚轮缩放K线图
+5. **拖拽查看**：按住鼠标拖拽查看历史数据
+6. **查看详情**：鼠标悬停在K线上查看详细数据
 
+## 技术栈
 
-#### 特技
+- **前端**：原生 HTML5 + CSS3 + JavaScript (ES6+)
+- **图表**：Canvas 2D API
+- **数据解压**：[pako](https://github.com/nodeca/pako) (gzip解压)
+- **部署**：Gitee Pages
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 数据更新
+
+数据文件 `data/recommended_stocks.json.gz` 由后端策略系统自动更新，包含：
+- 推荐股票列表
+- 每只股票最近100个交易日的K线数据
+- 股票基本信息和推荐理由
+
+## 本地开发
+
+由于浏览器安全限制，本地开发需要启动一个HTTP服务器：
+
+```bash
+# 使用 Python
+python -m http.server 8080
+
+# 或使用 Node.js
+npx serve .
+```
+
+然后访问 `http://localhost:8080`
+
+## 浏览器支持
+
+- Chrome 60+
+- Firefox 55+
+- Safari 11+
+- Edge 79+
+- 移动端浏览器
+
+## License
+
+MIT

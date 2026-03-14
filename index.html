@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推荐股票数据展示</title>
+    <script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧股票列表 -->
+        <aside class="stock-list-panel">
+            <div class="panel-header">
+                <h2>推荐股票</h2>
+                <div class="meta-info" id="metaInfo"></div>
+            </div>
+            <div class="stock-list" id="stockList">
+                <div class="loading">加载中...</div>
+            </div>
+        </aside>
+        
+        <!-- 右侧图表区域 -->
+        <main class="chart-panel">
+            <div class="stock-header" id="stockHeader">
+                <span class="placeholder">请从左侧选择一只股票</span>
+            </div>
+            <div class="charts-container" id="chartsContainer">
+                <!-- 主图：K线 + MA -->
+                <div class="chart-wrapper main-chart" id="mainChartWrapper">
+                    <canvas id="mainChart"></canvas>
+                </div>
+                <!-- 副图选择器 -->
+                <div class="indicator-tabs">
+                    <button class="tab-btn active" data-indicator="vol">VOL</button>
+                    <button class="tab-btn" data-indicator="macd">MACD</button>
+                    <button class="tab-btn" data-indicator="kdj">KDJ</button>
+                    <button class="tab-btn" data-indicator="boll">BOLL</button>
+                    <button class="tab-btn" data-indicator="custom1">指标1</button>
+                    <button class="tab-btn" data-indicator="custom2">指标2</button>
+                </div>
+                <!-- 副图区域 -->
+                <div class="chart-wrapper sub-chart" id="subChartWrapper">
+                    <canvas id="subChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/indicators.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
